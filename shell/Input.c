@@ -15,7 +15,7 @@ char *getUserInput(void)
     int step = 0;
     
     /* While the user hasn't pressed enter or sent an EOF, we read */
-    while ((c = getchar()) != EOF && c != '\n') {
+    while ((c = getchar()) != EOF && c != '\n' && c != '\r') {
         /* If the input is bigger the buffer size, we reallocate memory.
          * In the First loop we enter here to allocate memory
          */
@@ -28,6 +28,7 @@ char *getUserInput(void)
             step++;
         }
         *ptr_input++ = c; /* Fill in the buffer */
+        putchar(c);
     };
     
     /* If the user didn't press ENTER without any input, then we actually check if
